@@ -1,0 +1,174 @@
+<!doctype html>
+<head>
+  <title>ABC Notation Online Editor</title>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="ABC Notation Online Editor">
+
+ 
+
+  
+  <script type="text/javascript" src="libs/abcjs-basic-min.js"></script>
+  <link rel="stylesheet" type="text/css" href="libs/abcjs-audio.css">
+  <link rel="stylesheet" type="text/css" href="libs/style.css">
+  
+
+  <script type="text/javascript">
+
+    window.onload = function() {
+
+      <!-- let params = (new URL(document.location)).searchParams; -->
+      <!-- let content = params.get('content'); -->
+      <!-- if (content) { -->
+        <!-- document.getElementById('abc').value = decodeURIComponent(atob(content)); -->
+      <!-- } -->
+      
+      <!-- new ABCJS.Editor("abc", { canvas_id: "paper", -->
+        <!-- warnings_id: "warnings", -->
+        <!-- synth: { -->
+          <!-- el: "#audio", -->
+          <!-- options: { displayLoop: true, displayRestart: true, displayPlay: true, displayProgress: true, displayWarp: true } -->
+        <!-- }, -->
+        <!-- render_options: { responsive: 'resize'}, -->
+        <!-- abcjsParams: {} -->
+      <!-- }); -->
+	  
+	  
+	  //FXP
+	  
+		const highlightedItems = document.querySelectorAll("textarea[id^=abc_ex_]");
+
+			highlightedItems.forEach((e) => {
+				console.log(e.id);
+				
+				// Ajoute le details et le summary
+				const d = document.createElement("details");
+				d.setAttribute("id", "details_"+e.id);
+				const s = document.createElement("summary");
+				d.setAttribute("id", "summary_"+e.id);
+				const ds = document.createTextNode("Code ABC");
+				s.appendChild(ds);
+				d.appendChild(s);
+				e.insertAdjacentElement('afterend', d);
+				
+				// Ajoute le warning
+				const w = document.createElement("div");
+				w.setAttribute("id", "warnings_"+e.id);
+				e.insertAdjacentElement('afterend', w);
+				
+				// Ajoute l'audio
+				const a = document.createElement("div");
+				a.setAttribute("id", "audio_"+e.id);
+				e.insertAdjacentElement('afterend', a);
+				
+				// Ajoute le paper correspondant
+				const p = document.createElement("div");
+				p.setAttribute("id", "paper_"+e.id);
+				e.insertAdjacentElement('afterend', p);
+				
+				
+				
+				// move textarea into summary
+				d.appendChild(e);
+				
+				
+				console.log(e.id);
+				console.log("paper_"+e.id);
+				
+				
+				new ABCJS.Editor(e.id, { canvas_id: "paper_"+e.id,
+					warnings_id: "warnings_"+e.id,
+					synth: {
+					  el: "#audio_"+e.id,
+					  options: { displayLoop: true, displayRestart: true, displayPlay: true, displayProgress: true, displayWarp: true }
+					},
+					render_options: { responsive: 'resize'},
+					abcjsParams: {}
+				});
+
+		});
+// fin FXP
+	  
+
+    }
+
+
+
+  </script>
+</head>
+<body>
+
+          <h1><b>ABC Notation</b> editor toolkit</h1>
+
+        <h3>Purpose</h3>
+		<div>This is a simple javascript tool to turn every textarea of the page into an ABC editor and player. It is intended to help hardcode html pages of music exercises.
+		<div>The abc code can be modified at runtime but the changes are not saved in a browser session.</div>
+		<h3>Usage</h3>
+		<div>Add a textarea in the page with an id starting by "abc_ex_". Put the ABC code of your song or exercise inside the textarea. For example <code><pre>&lt;textarea id="abc_ex_001"&gt;YOUR ABC CODE HERE &lt;/textarea&gt;</pre></pre></code></div>
+		<h3>Result</h3>
+		<div>For each textarea with an id starting with "abc_ex_":</div>
+		<ol>
+		<li>The music sheet is created</li>
+		<li>The audio player is added</li>
+		<li>The warnings are provided</li>
+		<li>The abc code is placed into an standard collapsible (Details/Summary)</li>
+		</ol>
+		<h3>Personal application</h3>
+		<div>I needed an easy way to write html pages to play offline on my mobile. It is meant to work with a simple http server. Otherwise the exercises are on my wordpress pages.</div>
+		<h3>Credits</h3>
+		<div>It refers to the <a href="https://abcnotation.com/">ABC Notation format proposed by Chris Walshaw</a>.</div>
+		<div>It is based on the <a href="https://www.abcjs.net/">abcjs open source project written by Paul Rosen and Gregory Dyke</a>.</div>
+		<div>It is an adaptation of <a href="https://abc.hieuthi.com/">Hieu-Thi Long's online tool</a>.</div>
+        
+		<h1>Demo</h1>
+
+<textarea id="abc_ex_07">
+X:7
+T:Exercice 7
+M:3/4
+K:C
+Q:100
+L:1/8
+| LG G G LG G G LG G | LG G G LG G G LG G |
+w:1 2 3 1 2 3 1 2 1 2 3 1 2 3 1 2
+w:B * * H * * B * B * * H * * B *
+| LG G G LG G G LG G | LG G G LG G G LG G |
+w:1 2 3 1 2 3 1 2 1 2 3 1 2 3 1 2
+w:B * * H * * B * B * * H * * B *
+</textarea>
+
+	  
+	  
+	  <textarea id="abc_ex_04">
+X:1
+T:Tejano (La Bamba)
+M:4/4
+L:1/8
+Q:1/4=130
+K:G
+"G"G2 Bd "C"c e2 d | "D"z D FA "C"cc"D"BA | "G"G2 Bd "C"c e2 d | "D"z D FA "C"cc"D"BA :|
+	  </textarea>
+	  
+	  
+	  
+	  <textarea id="abc_ex_05">
+X:3
+T:Exercice 3
+M:4/4
+K:C
+Q:100
+| G z GG z GGG |Gz GG z GGG | z8 |
+w:B B H H B H B B H H B H
+w:1 2 et et 4 et 1 2 et et 4 et
+| G z GG z GGG | Gz GG z GGG | z8 |
+w:B B H H B H B B H H B H
+w:1 2 et et 4 et 1 2 et et 4 et
+| G z GG z GGG |
+w:B B H H B H
+w:1 2 et et 4 et
+	  </textarea>
+	  
+
+  
+</body>
