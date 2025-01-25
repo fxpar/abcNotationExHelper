@@ -14,13 +14,17 @@ Add a textarea in the page with an id starting by "abc_ex_". Put the ABC code of
 ## Result
 For each textarea with an id starting with "abc_ex_":
 
-    The music sheet is created
-    The audio player is added
-    The warnings are provided
-    The abc code is placed into an standard collapsible (Details/Summary)
+* [x] The music sheet is created
+* [x] The audio player is added
+* [x] The warnings are provided
+* [x] The abc code is placed into an standard collapsible (Details/Summary)
 
 ## Personal application
-I needed an easy way to write html pages to play offline on my mobile. It is meant to work with a simple http server. Otherwise the exercises are on my wordpress pages.
+I needed an easy way to write html pages to play offline on my mobile. 
+
+It is meant to work with a simple http server. The orginal abc-basic.js has been modified to check local audio sounds before trying to download them. (the page needs to be served by http server to avoid CORS error)
+
+Otherwise the exercises are on my wordpress pages.
 
 ## Credits
 * It refers to the ABC Notation format proposed by Chris Walshaw.
