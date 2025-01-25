@@ -27,9 +27,9 @@ It is meant to work with a simple http server. The orginal abc-basic.js has been
 Otherwise the exercises are on my wordpress pages.
 
 ## Credits
-* It refers to the ABC Notation format proposed by Chris Walshaw.
-* It is based on the abcjs open source project written by Paul Rosen and Gregory Dyke.
-* It is an adaptation of Hieu-Thi Long's online tool.
+* It refers to the [ABC Notation format](https://abcnotation.com/) proposed by Chris Walshaw.
+* It is based on the [abcjs open source project](https://www.abcjs.net/) written by Paul Rosen and Gregory Dyke.
+* It is an adaptation of [Hieu-Thi Long's online tool](https://abc.hieuthi.com/).
 * Soundfonts for acoustic piano has been added for local server
 
 ## Demo 
